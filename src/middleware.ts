@@ -1,6 +1,6 @@
+import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
-import { createServerClient } from "@supabase/ssr";
 
 export async function middleware(request: NextRequest) {
   // Admin route protection only
@@ -29,7 +29,7 @@ export async function middleware(request: NextRequest) {
             }
           },
         },
-      },
+      }
     );
 
     const {

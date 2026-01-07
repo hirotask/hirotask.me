@@ -1,6 +1,6 @@
-import { createClient } from "@/lib/supabase/server";
-import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
 
 async function signOut() {
   "use server";
@@ -21,11 +21,7 @@ export default async function AdminPage() {
     redirect("/login");
   }
 
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("*")
-    .eq("id", user.id)
-    .single();
+  const { data: profile } = await supabase.from("profiles").select("*").eq("id", user.id).single();
 
   return (
     <div className="min-h-screen p-8">
@@ -43,8 +39,7 @@ export default async function AdminPage() {
             </p>
             {profile && (
               <p>
-                <span className="font-medium">管理者:</span>{" "}
-                {profile.is_admin ? "はい" : "いいえ"}
+                <span className="font-medium">管理者:</span> {profile.is_admin ? "はい" : "いいえ"}
               </p>
             )}
           </div>
@@ -52,9 +47,17 @@ export default async function AdminPage() {
 
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <h2 className="text-xl font-semibold mb-4">管理者機能</h2>
-          <p className="text-gray-600 dark:text-gray-400">
-            ここに管理者用の機能を追加できます。
-          </p>
+          <div className="space-y-4">
+            <a
+              href="/admin/pages"
+              className="block px-4 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors text-center"
+            >
+              ページ管理
+            </a>
+            <p className="text-gray-600 dark:text-gray-400 text-sm">
+              サイトのページを作成、編集、削除できます。
+            </p>
+          </div>
         </div>
 
         <div className="mt-6">
