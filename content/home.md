@@ -1,17 +1,18 @@
 ---
-title: Welcome to hirotask.me
-description: Personal website and blog
-date: 2026-01-02
+title: hirotask
 ---
 
-# Welcome to my website
+Hi, there! I'm hirotask, a web engineer.
 
-This is the home page. You can edit this content from the admin panel.
+I give some [talks](https://speakerdeck.com/hirotask) at conferences and study sessions, and I post blogs on [Qiita](https://qiita.com/hirotask). More essay-style content is posted on [sizu.me](https://sizu.me/hirotask).
 
-## Features
+My skill summary can also be viewed from [Lapras](https://lapras.com/public/OYZ0ICC).
 
-- Markdown-based content management
-- Easy to edit from the browser
-- Support for GitHub Flavored Markdown
+Find me on
+[GitHub](https://github.com/hirotask), [X](https://x.com/Hirotask_) 
 
-Feel free to explore and customize this site!
+If you enjoy my work and find them useful, please consider sponsor me to help my projects sustainable.
+
+https://ko-fi.com/hirotask
+
+Thank you!
