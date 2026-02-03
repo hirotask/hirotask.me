@@ -7,14 +7,15 @@ import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import "highlight.js/styles/github-dark.css";
 import { LinkCard } from "./LinkCard";
+import { IconLink } from "./IconLink";
 
 interface MarkdownRendererProps {
   content: string;
   className?: string;
 }
 
-// URL単独の行を検出する正規表現
-const URL_ONLY_REGEX = /^https?:\/\/[^\s]+$/;
+// URL単独の行を検出する正規表現（<URL>形式も含む）
+const URL_ONLY_REGEX = /^<?https?:\/\/[^\s>]+>?$/;
 
 export function MarkdownRenderer({ content, className = "" }: MarkdownRendererProps) {
   // URL単独の行をカード表示に変換
@@ -23,7 +24,9 @@ export function MarkdownRenderer({ content, className = "" }: MarkdownRendererPr
     .map((line) => {
       const trimmedLine = line.trim();
       if (URL_ONLY_REGEX.test(trimmedLine)) {
-        return `<link-card url="${trimmedLine}"></link-card>`;
+        // <URL> 形式の場合は <>を除去
+        const url = trimmedLine.replace(/^<|>$/g, "");
+        return `<link-card url="${url}"></link-card>`;
       }
       return line;
     })
@@ -31,13 +34,24 @@ export function MarkdownRenderer({ content, className = "" }: MarkdownRendererPr
 
   const components: Components = {
     a: ({ href, children }) => {
+      if (!href) return <span>{children}</span>;
+
+      // Check if link should have an icon
+      const shouldHaveIcon =
+        href.includes("github.com") ||
+        href.includes("youtube.com") ||
+        href.includes("youtu.be") ||
+        href.includes("twitter.com") ||
+        href.includes("x.com") ||
+        href.includes("linkedin.com") ||
+        href.startsWith("mailto:");
+
+      if (shouldHaveIcon) {
+        return <IconLink url={href}>{children}</IconLink>;
+      }
+
       return (
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 dark:text-blue-400 font-medium hover:underline hover:text-blue-700 dark:hover:text-blue-300 transition-all duration-200"
-        >
+        <a href={href} target="_blank" rel="noopener noreferrer">
           {children}
         </a>
       );
@@ -50,7 +64,7 @@ export function MarkdownRenderer({ content, className = "" }: MarkdownRendererPr
   };
 
   return (
-    <div className={`prose prose-lg dark:prose-invert max-w-none ${className}`}>
+    <div className={`prose prose-lg max-w-none ${className}`}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeHighlight, rehypeRaw]}

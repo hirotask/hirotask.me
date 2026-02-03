@@ -66,6 +66,43 @@ export async function getAllPages(): Promise<PageMetadata[]> {
   return pages.sort((a, b) => a.slug.localeCompare(b.slug));
 }
 
+export async function getBlogPosts(): Promise<PageContent[]> {
+  const contentDir = path.join(process.cwd(), "content", "blog");
+  const posts: PageContent[] = [];
+
+  try {
+    for await (const filePath of walkDir(contentDir)) {
+      const slug = pathToSlug(filePath);
+      const stats = await getFileStats(filePath);
+
+      if (!stats) continue;
+
+      const raw = await fs.readFile(filePath, "utf-8");
+      const { frontmatter, content } = parseMarkdown(raw);
+
+      posts.push({
+        slug,
+        title: frontmatter.title,
+        description: frontmatter.description,
+        createdAt: stats.birthtime.toISOString(),
+        updatedAt: stats.mtime.toISOString(),
+        path: filePath,
+        content,
+        frontmatter,
+      });
+    }
+  } catch (error) {
+    console.error("Error reading blog posts:", error);
+    return [];
+  }
+
+  return posts.sort((a, b) => {
+    const dateA = a.frontmatter.date ? new Date(a.frontmatter.date).getTime() : 0;
+    const dateB = b.frontmatter.date ? new Date(b.frontmatter.date).getTime() : 0;
+    return dateB - dateA;
+  });
+}
+
 export async function getPage(slug: string): Promise<PageContent | null> {
   try {
     const filePath = validateAndGetPath(slug);
@@ -97,7 +134,6 @@ export async function createPage(
   data: { title: string; content: string; description?: string }
 ): Promise<void> {
   const filePath = validateAndGetPath(slug);
-
   const existing = await getFileStats(filePath);
   if (existing) {
     throw new Error(`Page already exists: ${slug}`);

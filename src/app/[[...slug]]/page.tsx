@@ -46,17 +46,23 @@ export default async function ContentPage({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
-      <main className="max-w-4xl mx-auto px-6 py-16">
-        <article>
-          <header className="mb-8">
-            <h1 className="text-4xl font-bold mb-2 text-black dark:text-white">{page.title}</h1>
+    <div className="min-h-screen bg-black pt-16">
+      <main className="max-w-3xl mx-auto px-6 py-12">
+        <article className="slide-enter-content">
+          <header className="mb-12">
+            <h1 className="text-3xl font-bold mb-3 text-gray-100">
+              {page.title}
+            </h1>
             {page.description && (
-              <p className="text-lg text-gray-600 dark:text-gray-400">{page.description}</p>
+              <p className="text-base text-gray-400 mb-2">{page.description}</p>
             )}
             {page.frontmatter.date && (
-              <time className="text-sm text-gray-500 dark:text-gray-500">
-                {new Date(page.frontmatter.date).toLocaleDateString("ja-JP")}
+              <time className="text-sm text-gray-500 opacity-60">
+                {new Date(page.frontmatter.date).toLocaleDateString("ja-JP", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
               </time>
             )}
           </header>

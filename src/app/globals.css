@@ -1,8 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #e3e3e3;
+  --c-bg: #0a0a0a;
+  --c-scrollbar: #1a1a1a;
+  --c-scrollbar-hover: #2a2a2a;
+  --c-border: #1a1a1a;
+  --c-divider: #2a2a2a;
+  --accent: #7e97ff;
+  --accent-light: #9db2ff;
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -12,30 +20,110 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background-color: var(--c-bg);
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
 }
 
-/* Markdown prose styles customization */
+::selection {
+  background: var(--accent);
+  color: white;
+  opacity: 0.8;
+}
+
+/* Custom Scrollbar */
+* {
+  scrollbar-color: var(--c-scrollbar) var(--c-bg);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 6px;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: var(--c-bg);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--c-scrollbar);
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-scrollbar-hover);
+}
+
+/* Slide-in Animation */
+@keyframes slide-enter {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .slide-enter,
+  .slide-enter-content > * {
+    --enter-stage: 0;
+    --enter-step: 60ms;
+    animation: slide-enter 0.6s both;
+    animation-delay: calc(var(--enter-stage) * var(--enter-step));
+  }
+
+  .slide-enter-content > *:nth-child(1) { --enter-stage: 1; }
+  .slide-enter-content > *:nth-child(2) { --enter-stage: 2; }
+  .slide-enter-content > *:nth-child(3) { --enter-stage: 3; }
+  .slide-enter-content > *:nth-child(4) { --enter-stage: 4; }
+  .slide-enter-content > *:nth-child(5) { --enter-stage: 5; }
+  .slide-enter-content > *:nth-child(6) { --enter-stage: 6; }
+  .slide-enter-content > *:nth-child(7) { --enter-stage: 7; }
+  .slide-enter-content > *:nth-child(8) { --enter-stage: 8; }
+  .slide-enter-content > *:nth-child(9) { --enter-stage: 9; }
+  .slide-enter-content > *:nth-child(10) { --enter-stage: 10; }
+}
+
+/* Markdown Prose Styles */
 .prose {
-  @apply text-gray-900 dark:text-gray-100;
+  --fg-light: #999;
+  --fg: #e8e8e8;
+  --fg-deep: #f5f5f5;
+  --fg-deeper: #fff;
+  color: var(--fg);
+  @apply text-base;
 }
 
 .prose p {
-  @apply leading-relaxed text-gray-800 dark:text-gray-200;
+  @apply leading-7 my-4;
+  color: var(--fg);
 }
 
 .prose strong {
-  @apply font-semibold text-gray-900 dark:text-white;
+  @apply font-semibold;
+  color: var(--fg-deep);
+}
+
+.prose em {
+  font-style: italic;
+  color: var(--fg-deep);
+  font-size: 1.02em;
 }
 
 .prose h1,
@@ -44,42 +132,108 @@ body {
 .prose h4,
 .prose h5,
 .prose h6 {
-  @apply font-bold text-gray-900 dark:text-white;
+  @apply font-semibold;
+  color: var(--fg-deeper);
+  scroll-margin-top: 5rem;
+}
+
+.prose h2 {
+  @apply text-2xl mt-12 mb-4;
+}
+
+.prose h3 {
+  @apply text-xl mt-8 mb-3;
+}
+
+.prose h4 {
+  @apply text-lg mt-6 mb-2;
+}
+
+.prose a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.prose a:hover {
+  border-bottom: 1px solid var(--accent);
 }
 
 .prose code {
-  @apply text-sm bg-gray-100 dark:bg-gray-800 text-pink-600 dark:text-pink-400 px-1.5 py-0.5 rounded;
+  @apply text-sm px-1.5 py-0.5 rounded font-mono;
+  background: rgba(125, 125, 125, 0.1);
+  color: var(--accent);
+  font-size: 0.9em;
 }
 
 .prose pre {
-  @apply bg-gray-900 dark:bg-gray-950 rounded-lg overflow-x-auto;
+  @apply rounded-lg overflow-x-auto my-5 p-4;
+  background: #0e0e0e;
+  border: 1px solid var(--c-border);
 }
 
 .prose pre code {
-  @apply bg-transparent text-gray-100 p-0;
+  @apply bg-transparent p-0;
+  color: var(--fg);
+  font-size: 0.92em;
+  line-height: 1.6;
 }
 
 .prose blockquote {
-  @apply border-l-4 border-gray-300 dark:border-gray-700 pl-4 italic text-gray-700 dark:text-gray-300;
+  @apply my-4 pl-4;
+  font-style: normal;
+  border-left: 3px solid var(--c-divider);
+  opacity: 0.8;
+}
+
+.prose blockquote > * {
+  opacity: 0.9;
 }
 
 .prose ul,
 .prose ol {
-  @apply text-gray-800 dark:text-gray-200;
+  @apply my-4;
+  color: var(--fg);
+}
+
+.prose ul > li,
+.prose ol > li {
+  @apply my-2;
+  padding-left: 0.5em;
+}
+
+.prose ul > li::marker {
+  color: var(--fg-light);
 }
 
 .prose hr {
-  @apply border-gray-300 dark:border-gray-700;
+  @apply my-12 mx-auto;
+  width: 50px;
+  border-color: var(--c-divider);
+  opacity: 0.5;
+}
+
+.prose img {
+  @apply rounded-lg shadow-md my-6;
+  transition: transform 0.3s ease;
+}
+
+.prose img:hover {
+  transform: scale(1.02);
 }
 
 .prose table {
-  @apply border-collapse w-full;
+  @apply border-collapse w-full my-6;
 }
 
 .prose th {
-  @apply bg-gray-100 dark:bg-gray-800 font-semibold text-left px-4 py-2;
+  @apply font-semibold text-left px-4 py-2;
+  background: rgba(125, 125, 125, 0.05);
+  border: 1px solid var(--c-border);
 }
 
 .prose td {
-  @apply border border-gray-300 dark:border-gray-700 px-4 py-2;
+  @apply px-4 py-2;
+  border: 1px solid var(--c-border);
 }

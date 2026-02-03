@@ -9,10 +9,8 @@ I give some [talks](https://speakerdeck.com/hirotask) at conferences and study s
 My skill summary can also be viewed from [Lapras](https://lapras.com/public/OYZ0ICC).
 
 Find me on
-[GitHub](https://github.com/hirotask), [X](https://x.com/Hirotask_) 
+[GitHub](https://github.com/hirotask), [Twitter](https://x.com/Hirotask_)
 
 If you enjoy my work and find them useful, please consider sponsor me to help my projects sustainable.
 
-https://ko-fi.com/hirotask
-
-Thank you!
+<https://ko-fi.com/hirotask>
