@@ -1,6 +1,6 @@
-## [hirotask.me](https://hirotask.me)
+# [hirotask.me](https://hirotask.me)
 
-This repository is for my personal website.
+My personal website powered by [Next.js](https://nextjs.org/)
 
 ## Getting started
 
@@ -16,3 +16,7 @@ To run this project, the following environment must be set up:
 1. `pnpm install`
 2. `pnpm dev`
 
+## License
+
+- Code is licensed under [MIT](LICENSE)
+- Words and images are licensed under <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>CC BY-NC-SA 4.0</a>.
