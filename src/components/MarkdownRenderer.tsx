@@ -56,11 +56,6 @@ export function MarkdownRenderer({ content, className = "" }: MarkdownRendererPr
         </a>
       );
     },
-    // カスタム要素としてlink-cardを処理
-    "link-card": ({ url }: { url?: string }) => {
-      if (!url) return null;
-      return <LinkCard url={url} />;
-    },
   };
 
   return (
