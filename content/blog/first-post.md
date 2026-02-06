@@ -12,6 +12,6 @@ So I decided to spend some time rebuilding my own website and added a blog secti
 Using the power of Claude Code and what I’ve learned about Next.js so far, I built a simple Markdown renderer. There might be better ways to do this, though.
 The design is also very minimal for now, and I plan to improve it gradually.
 
-For the blog, I’m planning to post articles in English as well, with the goal of sharing information beyond Japan. My English is still a work in progress, so I’ll probably get some help from AI, but eventually I’d like to be able to write English blog posts on my own.
+For now, I’m planning to post articles in English as well, with the goal of sharing information beyond Japan. My English is still a work in progress, so I’ll probably get some help from AI, but eventually I’d like to be able to write English blog posts on my own.
 
-This site is still a WIP. If you have any feedback or suggestions, please let me know by opening an issue here :)
+This site is still a WIP. If you have any feedback or suggestions, please let me know by [opening an issue](https://github.com/hirotask/hirotask.me/issues) :)
