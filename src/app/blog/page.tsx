@@ -25,7 +25,7 @@ export default async function BlogPage() {
             <p className="text-gray-500">No blog posts yet.</p>
           ) : (
             posts.map((post) => (
-              <article key={post.slug} className="group border-b border-gray-900 pb-8 last:border-0">
+              <article key={post.slug} className="group border-b border-gray-900 last:border-0">
                 <Link href={`/${post.slug}`} className="block">
                   <div className="space-y-2">
                     {post.frontmatter.date && (
