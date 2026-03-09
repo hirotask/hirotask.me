@@ -1,5 +1,5 @@
 ---
-title: Why We Considered Introducing Storybook: Pros and Cons
+title: Why We Considered Introducing Storybook
 date: 2026-03-09
 tags: [blog, javascript]
 ---
