@@ -1,0 +1,14 @@
+services:
+  dev:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ${XDG_CONFIG_HOME:-~/.config}/nvim:/root/.config/nvim
+      - ${XDG_DATA_HOME:-~/.local/share}/nvim:/root/.local/share/nvim
+      - ${XDG_STATE_HOME:-~/.local/state}/nvim:/root/.local/state/nvim
+      - ${XDG_CACHE_HOME:-~/.cache}/nvim:/root/.cache/nvim
+    stdin_open: true
+    tty: true

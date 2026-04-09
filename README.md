@@ -8,13 +8,36 @@ My personal website powered by [Next.js](https://nextjs.org/)
 
 To run this project, the following environment must be set up:
 
+- Docker engine
+
+or
+
 - Node >= v20.0.0
 - pnpm >= 10.0.0
 
 ### Run this app
 
+#### Using Docker (recommended)
+
+```bash
+docker compose up
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+#### Without Docker
+
 1. `pnpm install`
 2. `pnpm dev`
+
+### Setup your environment to develop this project
+
+#### Using Docker (recommended)
+
+```bash
+docker compose up -d
+docker compose dev bash
+```
 
 ## License
 
