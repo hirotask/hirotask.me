@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import type { PageContent, PageFrontmatter, PageMetadata } from "@/types/content";
-import { parseMarkdown, serializeMarkdown } from "./parser";
+import type { PageContent, PageMetadata } from "@/types/content";
+import { parseMarkdown } from "./parser";
 import { validateAndGetPath } from "./validator";
 
 async function getFileStats(filePath: string) {

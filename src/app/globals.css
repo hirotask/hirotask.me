@@ -194,6 +194,8 @@ body {
 .prose ul,
 .prose ol {
   @apply my-4;
+  list-style: inside;
+  list-style-position: inside;
   color: var(--fg);
 }
 
@@ -203,6 +205,10 @@ body {
   padding-left: 0.5em;
 }
 
+.prose li > p {
+  @apply my-0;
+}
+
 .prose ul > li::marker {
   color: var(--fg-light);
 }
@@ -210,7 +216,7 @@ body {
 .prose hr {
   @apply my-12 mx-auto;
   width: 50px;
-  border-color: var(--c-divider);
+  border-color: var(--fg);
   opacity: 0.5;
 }
 
