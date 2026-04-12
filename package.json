@@ -28,7 +28,8 @@
     "react-markdown": "^10.1.0",
     "rehype-highlight": "^7.0.2",
     "rehype-raw": "^7.0.0",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "yaml": "^2.8.3"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.10",

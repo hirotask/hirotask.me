@@ -1,0 +1,14 @@
+projects:
+  MobileApps:
+    - name: 'Artmate'
+      link: 'https://github.com/hirotask/artmate'
+      desc: 'A social media for sharing museum information'
+  DiscordBot:
+    - name: 'BOICHAN'
+      link: 'https://github.com/hirotask/BOICHAN'
+      desc: 'A Discord bot that transcribes voice chat in real time.'
+  MinecraftMods:
+    - name: 'ParticleDrawing'
+      link: 'https://github.com/hirotask/ParticleDrawing'
+      desc: 'A Minecraft plugin which can draw complex curves with particles.'
+

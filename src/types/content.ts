@@ -26,3 +26,19 @@ export interface ApiResponse<T = unknown> {
   data?: T;
   error?: string;
 }
+
+export interface ProjectItem {
+  name: string;
+  link: string;
+  desc: string;
+  icon?: string;
+}
+
+export interface ProjectCategory {
+  category: string;
+  projects: ProjectItem[];
+}
+
+export interface ProjectsData {
+  projects: Record<string, ProjectItem[]>;
+}
