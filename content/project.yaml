@@ -1,5 +1,8 @@
 projects:
   MobileApps:
+    - name: 'Todo App'
+      link: 'https://github.com/hirotask/TodoMobileApp'
+      desc: 'A simple todo app'
     - name: 'Artmate'
       link: 'https://github.com/hirotask/artmate'
       desc: 'A social media for sharing museum information'
