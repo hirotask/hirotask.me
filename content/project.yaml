@@ -1,17 +1,23 @@
 projects:
-  MobileApps:
+  Mobile:
     - name: 'Todo App'
       link: 'https://github.com/hirotask/TodoMobileApp'
       desc: 'A simple todo app'
     - name: 'Artmate'
       link: 'https://github.com/hirotask/artmate'
       desc: 'A social media for sharing museum information'
-  DiscordBot:
-    - name: 'BOICHAN'
-      link: 'https://github.com/hirotask/BOICHAN'
-      desc: 'A Discord bot that transcribes voice chat in real time.'
+  Web:
+    - name: 'ガクコム！(Gakucom!)'
+      link: 'https://github.com/gakucom/ec2-platform-front'
+      desc: 'A service that supports student communities. It allows posting member recruitment information and event details organized by the community.'
+    - name: 'hirotask.me'
+      link: 'https://github.com/hirotask/hirotask.me'
+      desc: 'My personal website.'
   MinecraftMods:
     - name: 'ParticleDrawing'
       link: 'https://github.com/hirotask/ParticleDrawing'
       desc: 'A Minecraft plugin which can draw complex curves with particles.'
-
+  Others:
+    - name: 'BOICHAN'
+      link: 'https://github.com/hirotask/BOICHAN'
+      desc: 'A Discord bot that transcribes voice chat in real time.'
