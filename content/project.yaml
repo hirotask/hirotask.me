@@ -13,11 +13,17 @@ projects:
     - name: 'hirotask.me'
       link: 'https://github.com/hirotask/hirotask.me'
       desc: 'My personal website.'
-  MinecraftMods:
+  Libraries:
+    - name: 'flagly'
+      link: 'https://github.com/hirotask/flagly'
+      desc: 'A feature flag management library for TypeScript.'
     - name: 'ParticleDrawing'
       link: 'https://github.com/hirotask/ParticleDrawing'
       desc: 'A Minecraft plugin which can draw complex curves with particles.'
   Others:
+    - name: 'minishell'
+      link: 'https://github.com/hirotask/minishell'
+      desc: 'A shell written in C with a minimal set of built-in features.'
     - name: 'BOICHAN'
       link: 'https://github.com/hirotask/BOICHAN'
       desc: 'A Discord bot that transcribes voice chat in real time.'
