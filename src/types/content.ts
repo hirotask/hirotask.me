@@ -42,3 +42,21 @@ export interface ProjectCategory {
 export interface ProjectsData {
   projects: Record<string, ProjectItem[]>;
 }
+
+export interface TalkPresentation {
+  date: string;
+  lang: string;
+  conference: string;
+  pdf?: string;
+  spa?: string;
+}
+
+export interface Talk {
+  title: string;
+  description?: string;
+  presentations: TalkPresentation[];
+}
+
+export interface TalksData {
+  talks: Talk[];
+}

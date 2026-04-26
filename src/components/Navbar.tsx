@@ -29,6 +29,12 @@ export function Navbar() {
               >
                 Projects
               </Link>
+              <Link
+                href="/talks"
+                className="text-[14px] text-gray-400 hover:text-gray-100 transition-colors"
+              >
+                Talks
+              </Link>
             </div>
           </div>
 

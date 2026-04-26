@@ -1,0 +1,9 @@
+talks:
+  - title: "Title 1"
+    description: "description 1"
+    presentations:
+      - date: "2026-04-11"
+        lang: "ja"
+        conference: "システムアイ LT"
+        pdf: "{PDFのURL}"
+        spa: "{SPAのURL}"

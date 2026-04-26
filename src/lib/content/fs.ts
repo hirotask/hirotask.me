@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import YAML from "yaml";
-import type { PageContent, PageMetadata, ProjectCategory, ProjectsData } from "@/types/content";
+import type { PageContent, PageMetadata, ProjectCategory, ProjectsData, Talk, TalksData } from "@/types/content";
 import { parseMarkdown } from "./parser";
 import { validateAndGetPath } from "./validator";
 
@@ -127,6 +127,18 @@ export async function getPage(slug: string): Promise<PageContent | null> {
   } catch (error) {
     console.error(`Error reading page ${slug}:`, error);
     return null;
+  }
+}
+
+export async function getTalks(): Promise<Talk[]> {
+  try {
+    const talksPath = path.join(process.cwd(), "content", "talks.yaml");
+    const raw = await fs.readFile(talksPath, "utf-8");
+    const data = YAML.parse(raw) as TalksData;
+    return data.talks ?? [];
+  } catch (error) {
+    console.error("Error reading talks:", error);
+    return [];
   }
 }
 
