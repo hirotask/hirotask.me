@@ -1,0 +1,42 @@
+version: 2
+updates:
+  # pnpm (npm エコシステム) の依存関係をまとめて 1 つの PR にする
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Tokyo"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    groups:
+      npm-dependencies:
+        patterns:
+          - "*"
+      npm-security:
+        applies-to: security-updates
+        patterns:
+          - "*"
+
+  # Dockerfile のベースイメージ (node)
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Tokyo"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    groups:
+      docker:
+        patterns:
+          - "*"
+    ignore:
+      # Node.js のメジャーバージョンは手動で上げる
+      - dependency-name: "node"
+        update-types: ["version-update:semver-major"]
